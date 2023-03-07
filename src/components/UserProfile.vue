@@ -67,7 +67,7 @@
             </div>
             <div class="">
               <ul class="p-0">
-                <li v-for="item in topArtistsData.items" :key="item.id" class="mb-4" style="list-style-type: none">
+                <li v-for="item in topArtistsData.items" :key="item.id" class="item px-2 py-3" style="list-style-type: none">
                   <router-link class="text-decoration-none text-white" :to="{
                     name: 'artist',
                     params: {
@@ -99,7 +99,7 @@
 
               <div class="col text-right">
                 <b-button class="bg-transparent button-spotify px-4">
-                  <router-link to="/artists" class="text-decoration-none text-white">
+                  <router-link to="/tracks" class="text-decoration-none text-white">
                     <span class="font-size-sm">
                       SEE MORE
                     </span>
@@ -110,40 +110,43 @@
 
             <div class="row mx-0">
               <ul class="p-0">
-                <li v-for="item in topTracksData.items" :key="item.id" class="mb-4" style="list-style-type: none">
-                  <div class="row mx-0 align-items-center justify-content-start">
-                    <div class="col">
-                      <img v-if="item.album.images && item.album.images.length > 0" :src="item.album.images[0].url" width="92%" class="rounded-0" alt="">
-                    </div>
-                    <div class="col-10 text-left">
-                      <div class="fw-bold">
-                        {{ item.name }}
-                        <!-- <span class="font-size-xs text-grey">
-                          ({{ Math.ceil(parseFloat(item.duration_ms) /  1000 / 60) }}m)
-                        </span> -->
+                <li v-for="item in topTracksData.items" :key="item.id" class="mb-4 item px-2 py-3" style="list-style-type: none">
+                  <router-link class="text-decoration-none text-white" :to="{
+                    name: 'track',
+                    params: {
+                      id: item.id
+                    }
+                  }">
+                    <div class="row mx-0 align-items-center justify-content-start">
+                      <div class="col">
+                        <img v-if="item.album.images && item.album.images.length > 0" :src="item.album.images[0].url" width="92%" class="rounded-0" alt="">
                       </div>
-                      <div class="text-grey fw-bolder font-size-sm mt-1">
-                        <span v-for="(artist, index) in item.artists" :key="index">
-                          {{ artist.name }}
-                          <span v-if="index != item.artists.length - 1">
-                            ,
+                      <div class="col-10 text-left">
+                        <div class="fw-bold">
+                          {{ item.name }}
+                          <!-- <span class="font-size-xs text-grey">
+                            ({{ Math.ceil(parseFloat(item.duration_ms) /  1000 / 60) }}m)
+                          </span> -->
+                        </div>
+                        <div class="text-grey fw-bolder font-size-sm mt-1">
+                          <span v-for="(artist, index) in item.artists" :key="index">
+                            {{ artist.name }}
+                            <span v-if="index != item.artists.length - 1">
+                              ,
+                            </span>
                           </span>
-                        </span>
-                        <span class="mx-1">
-                          ·  
-                        </span>
-                        <span class="font-size-xs text-grey">
-                          ({{ Math.ceil(parseFloat(item.duration_ms) /  1000 / 60) }}m)
-                        </span>
+                          <span class="mx-1">
+                            ·  
+                          </span>
+                          <span class="font-size-xs text-grey">
+                            ({{ Math.ceil(parseFloat(item.duration_ms) /  1000 / 60) }}m)
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </router-link>
                 </li>
               </ul>
-
-              <!-- <div class="col-6 col-md-4 col-lg-3 mb-4" v-for="item in playlistsData.items" :key="item.id">
-                <img :src="item.images[0].url" width="100%" alt="">
-              </div> -->
             </div>
           </div>
         </div>
@@ -231,5 +234,14 @@ export default {
 h1 {
   font-size: 3.5rem;
   font-weight: 900;
+}
+
+.item {
+  transition: 0.3s all;
+}
+
+.item:hover {
+  background: black;
+  border-radius: 10px;
 }
 </style>

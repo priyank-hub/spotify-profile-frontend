@@ -7,10 +7,14 @@
             <div class="text-left artist" v-else-if="artistData">
                 <div class="font-weight-bold font-size-xl">
                     <span class="text-accent">
-                        <router-link to="/artists" class="text-decoration-none text-accent">
+                        <!-- <router-link to="/artists" class="text-decoration-none text-accent">
                             <i class="fas fa-chevron-left"></i>
                             Artists
-                        </router-link>
+                        </router-link> -->
+                        <span @click="$router.go(-1)" class="cursor-pointer">
+                            <i class="fas fa-chevron-left"></i>
+                            Back
+                        </span>
                     </span>
                     / {{ artistData.name }}
                 </div>
@@ -64,34 +68,41 @@
 
                         <div>
                             <ul class="p-0 tracks">
-                                <li v-for="item in topTracksData.tracks" :key="item.id" class="mb-4" style="list-style-type: none">
-                                    <div class="d-flex flex-row align-items-center justify-content-start">
-                                        <div class="">
-                                            <img v-if="item.album.images && item.album.images.length > 0" :src="item.album.images[0].url" class="rounded-0" alt="">
-                                        </div>
-                                        <div class="col-10 text-left">
-                                            <div class="mx-3">
-                                                <div class="fw-bold">
-                                                    {{ item.name }}
-                                                </div>
+                                <li v-for="item in topTracksData.tracks" :key="item.id" class="item px-2 py-3" style="list-style-type: none">
+                                    <router-link class="text-decoration-none text-white" :to="{
+                                        name: 'track',
+                                        params: {
+                                            id: item.id
+                                        }
+                                    }">
+                                        <div class="d-flex flex-row align-items-center justify-content-start">
+                                            <div class="">
+                                                <img v-if="item.album.images && item.album.images.length > 0" :src="item.album.images[0].url" class="rounded" alt="">
+                                            </div>
+                                            <div class="col-10 text-left">
+                                                <div class="mx-3">
+                                                    <div class="fw-bold">
+                                                        {{ item.name }}
+                                                    </div>
 
-                                                <div class="text-grey fw-bolder font-size-sm mt-1">
-                                                    <span v-for="(artist, index) in item.artists" :key="index">
-                                                        {{ artist.name }}
-                                                    <span v-if="index != item.artists.length - 1">
-                                                        ,
-                                                    </span>
-                                                    </span>
-                                                    <span class="mx-1">
-                                                        ·  
-                                                    </span>
-                                                    <span class="font-size-xs text-grey">
-                                                        ({{ Math.ceil(parseFloat(item.duration_ms) /  1000 / 60) }}m)
-                                                    </span>
+                                                    <div class="text-grey fw-bolder font-size-sm mt-1">
+                                                        <span v-for="(artist, index) in item.artists" :key="index">
+                                                            {{ artist.name }}
+                                                        <span v-if="index != item.artists.length - 1">
+                                                            ,
+                                                        </span>
+                                                        </span>
+                                                        <span class="mx-1">
+                                                            ·  
+                                                        </span>
+                                                        <span class="font-size-xs text-grey">
+                                                            ({{ Math.ceil(parseFloat(item.duration_ms) /  1000 / 60) }}m)
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </router-link>
                                 </li>
                             </ul>
                         </div>
@@ -165,5 +176,14 @@ export default {
 
 .artist {
   margin: 30px;
+}
+
+.item {
+    transition: 0.3s all;
+}
+
+.item:hover {
+    background: black;
+    border-radius: 20px;
 }
 </style>

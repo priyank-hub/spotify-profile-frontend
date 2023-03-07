@@ -6,7 +6,7 @@
         </div>
 
         <div class="artists" v-else-if="artistsData">
-          <div class="text-left">
+          <div class="text-left mx-3 mt-4">
             <div class="font-weight-bold font-size-xl">Top Artists Of All Time</div>
           </div>
           <div class="row mx-0 my-5">
@@ -65,7 +65,6 @@ export default {
 
     await this.getTopArtistsLong(headers)
     .then(response => {
-      console.log('response', response);
       this.loading = false;
       if (response.status == 200) {
         this.artistsData = response.data;
@@ -86,7 +85,7 @@ export default {
 <style scoped>
 @media screen and (max-width: 768px) {
   .artists {
-    margin: 0px;
+    margin: 10px !important;
   }
 }
 

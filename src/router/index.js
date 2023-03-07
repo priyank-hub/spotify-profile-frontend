@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Login from '../components/Login'
 import HomeView from '../views/HomeView.vue'
 import TopArtists from '../components/TopArtists'
+import TopTracks from '../components/TopTracks'
+import Playlists from '../components/Playlists'
+import Playlist from '../components/Playlist'
 import Artist from '../components/Artist'
-import Login from '../components/Login'
+import Track from '../components/Track'
 import { getAccessToken, setLocalAccessToken, setLocalRefreshToken } from '@/Utils/index'
 
 Vue.use(VueRouter)
@@ -29,7 +33,29 @@ const routes = [
     name: 'artist',
     props: true,
     component: Artist,
-  }
+  },
+  {
+    path: '/tracks',
+    name: 'tracks',
+    component: TopTracks,
+  },
+  {
+    path: '/track/:id',
+    name: 'track',
+    props: true,
+    component: Track,
+  },
+  {
+    path: '/playlists',
+    name: 'playlists',
+    component: Playlists,
+  },
+  {
+    path: '/playlist/:id',
+    name: 'playlist',
+    props: true,
+    component: Playlist,
+  },
 ]
 
 const router = new VueRouter({

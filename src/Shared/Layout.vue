@@ -2,58 +2,58 @@
   <div class="">
     <div class="content">
         <nav class="my-nav text-white">
-            <div class="brand">
+            <div class="brand mt-3">
                 <img src="/assets/Spotify_icon.png" height="60px" alt="">
             </div>
 
             <div class="menu w-100">
                 <ul class="p-0 m-0">
-                    <li>
+                    <li class="col">
                         <router-link to="/" class="text-decoration-none">
-                            <div class="p-2 my-3">
+                            <div class="menu-item">
                                 <div class="">
                                     <i class="fas fa-user"></i>
                                 </div>
-                                <div class="text-center font-size-xs text-grey">
+                                <div class="text-center font-size-custom text-grey">
                                     Profile
                                 </div>
                             </div>
                         </router-link>
                     </li>
 
-                    <li>
+                    <li class="col">
                         <router-link to="/artists" class="text-decoration-none">
-                            <div class="p-2">
+                            <div class="menu-item">
                                 <div>
                                     <i class="fas fa-microphone"></i>
                                 </div>
-                                <div class="text-center font-size-xs text-grey">
+                                <div class="text-center font-size-custom text-grey">
                                     Top Artists
                                 </div>
                             </div>
                         </router-link>
                     </li>
 
-                    <li>
+                    <li class="col">
                         <router-link to="/tracks" class="text-decoration-none">
-                            <div class="p-2 my-3">
+                            <div class="menu-item">
                                 <div>
                                     <i class="fas fa-music"></i>
                                 </div>
-                                <div class="text-center font-size-xs text-grey">
+                                <div class="text-center font-size-custom text-grey">
                                     Top Tracks
                                 </div>
                             </div>
                         </router-link>
                     </li>
 
-                    <li>
+                    <li class="col">
                         <router-link to="/playlists" class="text-decoration-none">
-                            <div class="p-2 my-3">
+                            <div class="menu-item">
                                 <div>
                                     <i class="fas fa-headphones"></i>
                                 </div>
-                                <div class="text-center font-size-xs text-grey">
+                                <div class="text-center font-size-custom text-grey">
                                     Playlists
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                 </ul>
             </div>
 
-            <div class="brand">
+            <div class="brand mb-3">
                 <span class="">
                     <i class="fab fa-2x fa-github text-grey"></i>
                 </span>
@@ -110,7 +110,7 @@ export default {
     background: black;
     z-index: 100;
     box-shadow: rgb(0 0 0 / 30%) 0px 0px 10px;
-    padding: 10px;
+    padding: 0px;
 }
 
 .content {
@@ -149,14 +149,36 @@ export default {
 
     .my-nav ul {
         width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
+
+    nav a.router-link-exact-active .menu-item {
+        background: rgb(24, 24, 24) !important;
+        border-bottom: 3px solid rgb(29, 185, 84);
+        border-left: none !important;
+    }
 }
 
 .my-nav li {
     list-style-type: none;
+}
+
+.menu-item {
+    padding: 13px 0px !important;
+    transition: 0.3s all;
+}
+
+.menu-item:hover {
+    background: rgb(24, 24, 24) !important;
+    border-left: 3px solid rgb(29, 185, 84);
+}
+
+nav a.router-link-exact-active .menu-item {
+    background: rgb(24, 24, 24) !important;
+    border-left: 3px solid rgb(29, 185, 84);
 }
 </style>
