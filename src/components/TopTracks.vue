@@ -5,6 +5,17 @@
                 Loading
             </div>
 
+            <div v-else-if="error">
+              <div class="row mx-0 justify-content-center align-items-center text-white" style="min-height: 100vh">
+                <div class="">
+                  <img src="/assets/warning.png" width="50px" alt="">
+                  <div class="my-3">
+                    {{ errorReason }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div v-else-if="tracksData" class="tracks">
                 <div class="text-left mx-3 mt-4">
                     <div class="font-weight-bold font-size-xl">Top Tracks Of All Time</div>
@@ -68,6 +79,8 @@ export default {
     return {
       loading: false,
       tracksData: false,
+      error: false,
+      errorReason: null,
     }
   },
   
@@ -85,6 +98,11 @@ export default {
       if (response.status == 200) {
         this.tracksData = response.data;
       }
+    })
+    .catch(err => {
+      console.log('error', err);
+      this.error = true;
+      this.errorReason = err.response.data;
     });
 
     this.loading = false;

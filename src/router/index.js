@@ -68,7 +68,7 @@ router.beforeEach(async (to, from, next) => {
   let isAuthenticated = false;
 
   if (to.name == 'home' && to.query.success == 'true') {
-    console.log('setting token');
+    console.log('setting token', to);
     await setLocalAccessToken(to.query.access_token);
     await setLocalRefreshToken(to.query.refresh_token);
     isAuthenticated = true;
@@ -79,10 +79,15 @@ router.beforeEach(async (to, from, next) => {
   
   if (!isAuthenticated && to.name !== 'login') {
     console.log('to login page')
-    next({ name: 'login' });
+    next({ name: 'login'});
   }
 
-  next();
+  const hasQueryParams = Object.keys(to.query).length > 0;
+  if (hasQueryParams) {
+    next({ path: to.path, query: null });
+  } else {
+    next();
+  }
 });
 
 export default router

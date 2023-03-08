@@ -5,6 +5,17 @@
         Loading
       </div>
 
+      <div v-else-if="error">
+        <div class="row mx-0 justify-content-center align-items-center text-white" style="min-height: 100vh">
+          <div class="">
+            <img src="/assets/warning.png" width="50px" alt="">
+            <div class="my-3">
+              {{ errorReason }}
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div v-else-if="userData" class="container pt-5 text-white">
         <div class="header">
           <div class="row mx-0 align-items-center">
@@ -166,6 +177,8 @@ export default {
   data() {
     return {
       loading: false,
+      error: false,
+      errorReason: null,
       userData: null,
       followingData: null,
       playlistsData: null,
@@ -188,7 +201,12 @@ export default {
         this.topArtistsData = topArtists.data;
         this.topTracksData = topTracks.data;
       }),
-    );
+    )
+    .catch(err => {
+      console.log('error', err);
+      this.error = true;
+      this.errorReason = err.response.data;
+    });
 
     //   .get('https://api.spotify.com/v1/me', { headers })
     //   .then(response => {
