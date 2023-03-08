@@ -84,7 +84,7 @@
             </div>
             <div class="">
               <ul class="p-0">
-                <li v-for="item in topArtistsData.items" :key="item.id" class="item px-2 py-3" style="list-style-type: none">
+                <li v-for="item in topArtistsData.items" :key="item.id" class="item py-3" style="list-style-type: none">
                   <router-link class="text-decoration-none text-white" :to="{
                     name: 'artist',
                     params: {
@@ -92,10 +92,10 @@
                     }
                   }">
                     <div class="row mx-0 align-items-center justify-content-start">
-                      <div class="col">
-                        <img v-if="item.images && item.images.length > 0" :src="item.images[0].url" width="92%" class="rounded-circle" alt="">
+                      <div class="col-2 col-lg-1 px-0">
+                        <img v-if="item.images && item.images.length > 0" :src="item.images[0].url" width="100%" class="rounded-circle" alt="">
                       </div>
-                      <div class="col-10 text-left">
+                      <div class="col-9 col-lg-10 mx-2 text-left">
                         <span class="fw-bold">
                           {{ item.name }}
                         </span>
@@ -135,10 +135,10 @@
                     }
                   }">
                     <div class="row mx-0 align-items-center justify-content-start">
-                      <div class="col">
+                      <div class="col-2 col-lg-1 px-0">
                         <img v-if="item.album.images && item.album.images.length > 0" :src="item.album.images[0].url" width="92%" class="rounded-0" alt="">
                       </div>
-                      <div class="col-10 text-left">
+                      <div class="col-9 col-lg-10 mx-2 text-left">
                         <div class="fw-bold">
                           {{ item.name }}
                           <!-- <span class="font-size-xs text-grey">
