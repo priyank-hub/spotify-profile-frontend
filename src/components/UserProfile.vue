@@ -15,7 +15,7 @@
 
             <div class="my-5">
               <b-button class="bg-transparent button-spotify px-5 py-2" @click="logoutSpotify()">
-                Logout
+                Logout 
               </b-button>
             </div>
           </div>
