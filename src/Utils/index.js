@@ -37,7 +37,7 @@ export const getAccessToken = () => {
 const refreshAccessToken = async () => {
     console.log('refreshing token');
     try {
-        const { data } = await axios.get(`http://localhost:3000/refresh_token?refresh_token=${getLocalRefreshToken()}`);
+        const { data } = await axios.get(`https://spotify-profile-backend.herokuapp.com/refresh_token?refresh_token=${getLocalRefreshToken()}`);
         const { access_token } = data;
         setLocalAccessToken(access_token);
         window.location.reload();
