@@ -56,7 +56,7 @@
                             </div>
                             <div class="mt-3">
                                 <a :href="trackData.external_urls.spotify" target="_blank" class="text-decoration-none text-white">
-                                    <b-button class="bg-accent text-white button-spotify px-4 border-0 py-2">
+                                    <b-button class="bg-accent text-white button-spotify-accent px-4 py-2">
                                         <span class="font-size-sm">
                                             PLAY ON SPOTIFY
                                         </span>

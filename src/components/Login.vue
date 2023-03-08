@@ -5,7 +5,7 @@
         Spotify Profile
       </div>
       <div class="my-4">
-        <b-button class="bg-accent text-white button-spotify fw-bold border-0 py-3 px-5">
+        <b-button class="bg-accent text-white button-spotify-accent fw-bold py-3 px-5">
           <a :href="url" class="text-decoration-none text-white">
             LOG IN TO SPOTIFY
           </a>
