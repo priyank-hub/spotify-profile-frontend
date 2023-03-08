@@ -63,9 +63,11 @@
             </div>
 
             <div class="brand mb-3">
-                <span class="">
-                    <i class="fab fa-2x fa-github text-grey"></i>
-                </span>
+                <a href="https://github.com/priyank-hub" target="_blank">
+                    <span class="">
+                        <i class="fab fa-2x fa-github text-grey hover"></i>
+                    </span>
+                </a>
             </div>
         </nav>
 
@@ -118,8 +120,15 @@ export default {
 }
 
 .slot {
-    min-height: 100vh;
-    
+    min-height: 100vh;   
+}
+
+.hover {
+    transition: 0.3s all;
+}
+
+.hover:hover {
+    color: #fff;
 }
 
 @media screen  and (max-width: 768px){

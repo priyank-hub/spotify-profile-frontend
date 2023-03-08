@@ -26,7 +26,9 @@ export default {
   },
   async mounted() {
     console.log('homeview component mounted');
-    this.$router.replace('/');
+    if (this.$router.query) {
+      this.$router.replace('/');
+    }
   }
 }
 </script>
